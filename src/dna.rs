@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-
+// Counting DNA Nucleotides: https://rosalind.info/problems/dna/
 pub fn count_nucleotides(sequence: &str) -> HashMap<char, i32> {
     let mut counts: HashMap<char, i32> = HashMap::new();
     for nucleotide in sequence.chars() {
@@ -14,6 +14,7 @@ pub fn count_nucleotides(sequence: &str) -> HashMap<char, i32> {
     counts
 }
 
+// Transcribing DNA into RNA: https://rosalind.info/problems/rna/
 pub fn dna_to_rna(dna_seq: &str) -> String {
     let mut rna_seq = String::new();
 
@@ -28,12 +29,19 @@ pub fn dna_to_rna(dna_seq: &str) -> String {
     rna_seq
 }
 
+// Complementing a Strand of DNA: https://rosalind.info/problems/revc/
 pub fn dna_rna_reverse_complement(dna_seq: &str) -> String {
     let mut rna_rev_comp = String::new();
 
     for nucleotide in dna_seq.chars().rev() {
         if nucleotide == 'T' {
-            rna_rev_comp.push('U')
+            rna_rev_comp.push('A')
+        } else if nucleotide == 'A' {
+            rna_rev_comp.push('T');
+        } else if nucleotide == 'C' {
+            rna_rev_comp.push('G');
+        } else if nucleotide == 'G' {
+            rna_rev_comp.push('C');
         }
     }
 
