@@ -30,7 +30,7 @@ pub fn dna_to_rna(dna_seq: &str) -> String {
 }
 
 // Complementing a Strand of DNA: https://rosalind.info/problems/revc/
-pub fn dna_rna_reverse_complement(dna_seq: &str) -> String {
+pub fn dna_reverse_complement(dna_seq: &str) -> String {
     let mut rna_rev_comp = String::new();
 
     for nucleotide in dna_seq.chars().rev() {
@@ -46,4 +46,34 @@ pub fn dna_rna_reverse_complement(dna_seq: &str) -> String {
     }
 
     rna_rev_comp
+}
+
+/**
+ *  Mendel's First Law: https://rosalind.info/problems/iprb/
+ * k -> number or homozygous dominant factors
+ * m -> num heterozygous factors
+ * n -> num homozygous recessive factors
+*/
+pub fn mendels_first_law(k: i32, m: i32, n: i32) -> f64 {
+    let mut prob_dominant = 0.0;
+    let population = k + m + n;
+
+    let prb_k = k as f64 / population as f64;
+
+    prob_dominant += prb_k * ((k - 1) as f64 / (population - 1) as f64);
+    prob_dominant += prb_k * (m as f64 / (population - 1) as f64);
+    prob_dominant += prb_k * (n as f64 / (population - 1) as f64);
+
+    let prb_m = m as f64 / population as f64;
+
+    prob_dominant += prb_m * (k as f64 / (population - 1) as f64);
+    prob_dominant += prb_m * ((m - 1) as f64 / (population - 1) as f64) * 0.75;
+    prob_dominant += prb_m * (n as f64 / (population - 1) as f64) * 0.5;
+
+    let prb_n = n as f64 / population as f64;
+
+    prob_dominant += prb_n * (k as f64 / (population - 1) as f64);
+    prob_dominant += prb_n * (m as f64 / (population - 1) as f64) * 0.5;
+
+    prob_dominant
 }
