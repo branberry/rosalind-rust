@@ -47,13 +47,13 @@ mod tests {
     fn test_mendels_first_law() {
         let result = mendels_first_law(30, 20, 18);
 
-        println!("{:.5}", result);
+        assert_eq!("0.83297", format!("{:.5}", result));
     }
 
     #[test]
     fn test_recurrence_relations() {
         let result = recurrence_relations(33, 2);
 
-        println!("{}", result);
+        assert_eq!(result, 2863311531);
     }
 }
