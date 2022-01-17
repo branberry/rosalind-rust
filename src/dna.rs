@@ -77,3 +77,19 @@ pub fn mendels_first_law(k: i32, m: i32, n: i32) -> f64 {
 
     prob_dominant
 }
+
+/**
+ * Rabbits and Recurrence Relations: https://rosalind.info/problems/fib/
+*/
+pub fn recurrence_relations(n: i64, k: i64) -> i64 {
+    let mut cache = vec![0, 1, 1];
+
+    for idx in 3..(n + 1) {
+        let f_n1 = *cache.get((idx - 1) as usize).unwrap();
+        let f_n2 = *cache.get((idx - 2) as usize).unwrap();
+
+        cache.insert(idx as usize, f_n1 + k * f_n2);
+    }
+
+    return *cache.get(n as usize).unwrap();
+}

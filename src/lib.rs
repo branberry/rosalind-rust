@@ -1,7 +1,7 @@
 mod dna;
 #[cfg(test)]
 mod tests {
-    use crate::dna::{self, mendels_first_law};
+    use crate::dna::{self, mendels_first_law, recurrence_relations};
 
     #[test]
     fn it_works() {
@@ -48,5 +48,12 @@ mod tests {
         let result = mendels_first_law(30, 20, 18);
 
         println!("{:.5}", result);
+    }
+
+    #[test]
+    fn test_recurrence_relations() {
+        let result = recurrence_relations(33, 2);
+
+        println!("{}", result);
     }
 }
